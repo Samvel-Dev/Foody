@@ -18,8 +18,13 @@ jobs:
       with:
         dotnet-version: 8.0.x
     - name: Restore the packages
-      run: dotnet restore
-    - name: Build the solution
-      run: dotnet build --no-restore
-    - name: Run All Test
-      run: dotnet test --no-build --verbosity normal
+  run: dotnet restore
+  working-directory: src/MyApp
+
+  - name: Build the solution
+  run: dotnet build --no-restore
+  working-directory: src/MyApp
+
+- name: Run All Tests
+  run: dotnet test --no-build --verbosity normal
+  working-directory: src/MyApp
